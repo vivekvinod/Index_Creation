@@ -36,7 +36,7 @@ class IndexModel:
     def calc_index_level(self, start_date: dt.date, end_date: dt.date) -> None:
         
         #Load the data with daily stock prices, to edit this path based on the location of the data file
-        stock_prices = pd.read_csv(r"C:\Users\vivek\Assessment-Index-Modelling/data_sources/stock_prices.csv")
+        stock_prices = pd.read_csv("data_sources/stock_prices.csv")
         stock_prices['Date'] = pd.to_datetime(stock_prices['Date'],format='%d/%m/%Y')
         
         #Column names of Stock A:J (10 stocks), can make this dynamic to automatically work for different sample size at a later stage
@@ -87,6 +87,9 @@ class IndexModel:
 
     def export_values(self, file_name: str):
         #File path to save the csv file
-        self.index.to_csv (r"C:\Users\vivek\Assessment-Index-Modelling/data_sources/results.csv", index = False, header=True)
+        #
+        self.index.to_csv (file_name, index = False, header=True)
+
+       #self.index.to_csv (r"C:\Users\vivek\Assessment-Index-Modelling/data_sources/results.csv", index = False, header=True)
 
         pass
